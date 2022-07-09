@@ -1,6 +1,6 @@
-﻿namespace Pixabay
+﻿namespace Pixabay.View
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         /// Required designer variable.
