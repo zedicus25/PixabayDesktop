@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using Pixabay.Model;
+using System.Windows.Forms;
 
 namespace Pixabay.View.CustomControlls
 {
@@ -7,6 +8,10 @@ namespace Pixabay.View.CustomControlls
         public PreviewImageControl()
         {
             InitializeComponent();
+        }
+        public PreviewImageControl(Hits hit) : this()
+        {
+            
         }
     }
 }

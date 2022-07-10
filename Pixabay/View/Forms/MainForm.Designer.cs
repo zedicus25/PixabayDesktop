@@ -28,13 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.previewImageControl1 = new Pixabay.View.CustomControlls.PreviewImageControl();
+            this.SuspendLayout();
+            // 
+            // previewImageControl1
+            // 
+            this.previewImageControl1.BackColor = System.Drawing.Color.Gainsboro;
+            this.previewImageControl1.Location = new System.Drawing.Point(12, 12);
+            this.previewImageControl1.Name = "previewImageControl1";
+            this.previewImageControl1.Size = new System.Drawing.Size(471, 357);
+            this.previewImageControl1.TabIndex = 0;
+            // 
+            // MainForm
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.previewImageControl1);
+            this.Name = "MainForm";
             this.Text = "Form1";
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private CustomControlls.PreviewImageControl previewImageControl1;
     }
 }
 
