@@ -62,5 +62,12 @@ namespace Pixabay.View
             InitializeGalleryControl();
             pageTB.Text = string.Empty;
         }
+
+        private void searchBtn_Click(object sender, System.EventArgs e)
+        {
+            _galleryController.Search(searchingTB.Text);
+            this.Controls.RemoveByKey("galleryControl");
+            InitializeGalleryControl();
+        }
     }
 }

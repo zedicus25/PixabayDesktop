@@ -20,6 +20,7 @@ namespace Pixabay.Controller
         public int CurrentPage { get; private set; }
         private int _maxPage;
         private int _minPage;
+        private string _previousSearch;
 
         public GalleryController()
         {
@@ -31,8 +32,8 @@ namespace Pixabay.Controller
             _client = new WebClient();
             _address = @"https://pixabay.com/api/?key=28501111-b5439624e74b8a51021b4ec3e&pretty=true";
             Gallery = GetJson(_client.DownloadString(_address));
-            CurrentPage = _minPage = 1;
-            _maxPage = Gallery.totalHits / Gallery.hits.Count;
+            CurrentPage = _minPage = 1; 
+            _previousSearch = string.Empty;
             StartDownloadFiles();
         }
 
@@ -41,6 +42,7 @@ namespace Pixabay.Controller
             DownloadTask = new Task(DownloadPreviewFiles);
             DownloadTask.Start();
             DownloadTask.Wait();
+            _maxPage = Gallery.totalHits / Gallery.hits.Count;
         }
 
         private void DownloadPreviewFiles()
@@ -81,6 +83,23 @@ namespace Pixabay.Controller
             }
 
             CurrentPage = page;
+            ClearGallery();
+            Gallery = GetJson(_client.DownloadString(_address));
+            StartDownloadFiles();
+        }
+
+        public void Search(string search)
+        {
+            if (_address.Contains("&q="))
+            {
+                _address = _address.Replace($"&q={_previousSearch}", $"&q={search}");
+            }
+            else if (!_address.Contains("&q="))
+            {
+                _address += $"&q={search}";
+            }
+
+            _previousSearch = search;
             ClearGallery();
             Gallery = GetJson(_client.DownloadString(_address));
             StartDownloadFiles();
