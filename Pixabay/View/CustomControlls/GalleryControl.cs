@@ -19,7 +19,8 @@ namespace Pixabay.View.CustomControlls
         }
         public GalleryControl(Size formSize, List<Hits> hits, string pathForDownload) : this()
         {
-            this.Size = formSize;
+            this.Width = formSize.Width;
+            this.Height = formSize.Height;
             mainPanel.Size = formSize;
             InitializeHits(hits, pathForDownload);
         }
@@ -41,26 +42,6 @@ namespace Pixabay.View.CustomControlls
                 {
                     pr.Location = new Point(0, mainPanel.Controls[mainPanel.Controls.Count - 1].Location.Y + pr.Height+5);
                 }
-
-                /*if (i == 0)
-                {
-                    pr.Location = new Point(10, 10);
-                    mainPanel.Controls.Add(pr);
-                    continue;
-                }
-
-                pr.Location = new Point(mainPanel.Controls[mainPanel.Controls.Count - 1].Width + 10,
-                                            mainPanel.Controls[mainPanel.Controls.Count - 1].Location.Y + 50);
-
-                if (i % maxCountInRow == 0)
-                {
-                    pr.Location = new Point(mainPanel.Controls[mainPanel.Controls.Count - 1].Width + 10,
-                        mainPanel.Controls[mainPanel.Controls.Count - 1].Height+10);
-                }*/
-
-
-
-
                 mainPanel.Controls.Add(pr);
             }
         }
