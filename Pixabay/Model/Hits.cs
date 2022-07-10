@@ -20,6 +20,7 @@
         public int views { get; set; }
         public int downloads { get; set; }
         public int likes { get; set; }
+        public int comments { get; set; }
 
         public string user { get; set; }
     }

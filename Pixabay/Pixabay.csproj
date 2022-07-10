@@ -78,6 +78,12 @@
     <Compile Include="Controller\GalleryController.cs" />
     <Compile Include="Model\Gallery.cs" />
     <Compile Include="Model\Hits.cs" />
+    <Compile Include="View\CustomControlls\GalleryControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\CustomControlls\GalleryControl.Designer.cs">
+      <DependentUpon>GalleryControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\CustomControlls\PreviewImageControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -106,7 +112,11 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="View\CustomControlls\GalleryControl.resx">
+      <DependentUpon>GalleryControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\CustomControlls\PreviewImageControl.resx">
       <DependentUpon>PreviewImageControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -130,6 +140,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Resources\comment.png" />
+    <Content Include="Resources\like.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

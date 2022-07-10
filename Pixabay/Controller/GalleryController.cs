@@ -15,7 +15,7 @@ namespace Pixabay.Controller
 
         private WebClient _client;
         private string _address;
-        private string _addressForDownload;
+        public string AddressForDownload { get; private set; }
 
         public GalleryController()
         {
@@ -23,7 +23,7 @@ namespace Pixabay.Controller
             //if(CheckFolder("PreviewImages") == false)
             // Directory.CreateDirectory(_addressForDownload);
 
-            _addressForDownload = @"F:\PreviewImages";
+            AddressForDownload = @"F:\PreviewImages";
             _client = new WebClient();
             _address = @"https://pixabay.com/api/?key=28501111-b5439624e74b8a51021b4ec3e&pretty=true";
             Gallery = GetJson(_client.DownloadString(_address));
@@ -34,6 +34,7 @@ namespace Pixabay.Controller
         {
             DownloadTask = new Task(DownloadPreviewFiles);
             DownloadTask.Start();
+            DownloadTask.Wait();
         }
 
         private void DownloadPreviewFiles()
@@ -44,7 +45,8 @@ namespace Pixabay.Controller
             foreach (var item in Gallery.hits)
             {
                 name = item.previewURL.Substring(item.previewURL.LastIndexOf('/')+1);
-                _client.DownloadFile(item.previewURL, Path.Combine(_addressForDownload,name));
+                string path = Path.Combine(AddressForDownload, name);
+                _client.DownloadFile(new Uri(item.previewURL), path);
             }
         }
 
@@ -67,7 +69,7 @@ namespace Pixabay.Controller
 
         public void ClearGallery()
         {
-            foreach (var item in Directory.GetFiles(_addressForDownload))
+            foreach (var item in Directory.GetFiles(AddressForDownload))
             {
                 File.Delete(item);
             }
