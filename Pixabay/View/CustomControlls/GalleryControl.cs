@@ -13,9 +13,11 @@ namespace Pixabay.View.CustomControlls
 {
     public partial class GalleryControl : UserControl
     {
+        private ViewForm _viewForm;
         public GalleryControl()
         {
             InitializeComponent();
+            _viewForm = new ViewForm();
         }
         public GalleryControl(Size formSize, List<Hits> hits, string pathForDownload) : this()
         {
@@ -31,6 +33,7 @@ namespace Pixabay.View.CustomControlls
             for (int i = 0; i < hits.Count; i++)
             {
                 PreviewImageControl pr = new PreviewImageControl(hits[i],path);
+                pr.ShowViewForm += ShowViewForm;
 
                 if (i != 0)
                     pr.Location = new Point(mainPanel.Controls[mainPanel.Controls.Count - 1].Location.X + pr.Width+5,
@@ -45,6 +48,12 @@ namespace Pixabay.View.CustomControlls
                 mainPanel.Controls.Add(pr);
                 GC.Collect(GC.GetGeneration(pr));
             }
+        }
+
+        private void ShowViewForm(Hits hit)
+        {
+            _viewForm = new ViewForm(hit);
+            _viewForm.ShowDialog();
         }
     }
 }

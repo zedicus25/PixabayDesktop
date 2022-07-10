@@ -99,6 +99,7 @@ namespace Pixabay.View.CustomControlls
             this.previewPB.Size = new System.Drawing.Size(471, 314);
             this.previewPB.TabIndex = 0;
             this.previewPB.TabStop = false;
+            this.previewPB.Click += new System.EventHandler(this.previewPB_Click);
             // 
             // PreviewImageControl
             // 

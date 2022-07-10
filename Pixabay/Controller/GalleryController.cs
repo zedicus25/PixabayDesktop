@@ -18,7 +18,7 @@ namespace Pixabay.Controller
         private string _address;
         public string AddressForDownload { get; private set; }
         public int CurrentPage { get; private set; }
-        private int _maxPage;
+        public int MaxPage { get; private set; }
         private int _minPage;
         private string _previousSearch;
 
@@ -42,7 +42,7 @@ namespace Pixabay.Controller
             DownloadTask = new Task(DownloadPreviewFiles);
             DownloadTask.Start();
             DownloadTask.Wait();
-            _maxPage = Gallery.totalHits / Gallery.hits.Count;
+            MaxPage = Gallery.totalHits / Gallery.hits.Count;
         }
 
         private void DownloadPreviewFiles()
@@ -67,15 +67,16 @@ namespace Pixabay.Controller
 
         public void GoToPage(int page)
         {
-            if (page < _minPage || page > _maxPage)
+            if (page < _minPage || page > MaxPage)
             {
                 SendMsg?.Invoke("Page exceeds the maximum or minimum");
                 return;
             }
+           
 
             if (_address.Contains("&page="))
             {
-                _address = _address.Replace($"&page={(page > CurrentPage ? CurrentPage-1:CurrentPage)}", $"&page={page}");
+                _address = _address.Replace($"&page={CurrentPage}", $"&page={page}");
             }
             else if (!_address.Contains("&page="))
             {
@@ -90,6 +91,8 @@ namespace Pixabay.Controller
 
         public void Search(string search)
         {
+            search = search.Replace(' ', '+');
+            search = search.ToLower();
             if (_address.Contains("&q="))
             {
                 _address = _address.Replace($"&q={_previousSearch}", $"&q={search}");

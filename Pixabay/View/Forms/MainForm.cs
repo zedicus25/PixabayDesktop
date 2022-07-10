@@ -13,7 +13,8 @@ namespace Pixabay.View
             _galleryController = new GalleryController();
             InitializeGalleryControl();
             _galleryController.SendMsg += GetMsg;
-            
+            SetCurrentPage();
+
         }
 
         private void InitializeGalleryControl()
@@ -33,6 +34,7 @@ namespace Pixabay.View
             _galleryController.GoToPage(_galleryController.CurrentPage + 1);
             this.Controls.RemoveByKey("galleryControl");
             InitializeGalleryControl();
+            SetCurrentPage();
         }
 
         private void prevBtn_Click(object sender, System.EventArgs e)
@@ -42,6 +44,7 @@ namespace Pixabay.View
             _galleryController.GoToPage(_galleryController.CurrentPage - 1);
             this.Controls.RemoveByKey("galleryControl");
             InitializeGalleryControl();
+            SetCurrentPage();
         }
 
         private void pageTB_TextChanged(object sender, System.EventArgs e)
@@ -53,6 +56,8 @@ namespace Pixabay.View
             }
         }
 
+        private void SetCurrentPage() => pageL.Text = $"Page {_galleryController.CurrentPage} of {_galleryController.MaxPage}";
+
         private void jumpToBtn_Click(object sender, System.EventArgs e)
         {
             if (pageTB.Text.Equals(string.Empty))
@@ -61,6 +66,7 @@ namespace Pixabay.View
             this.Controls.RemoveByKey("galleryControl");
             InitializeGalleryControl();
             pageTB.Text = string.Empty;
+            SetCurrentPage();
         }
 
         private void searchBtn_Click(object sender, System.EventArgs e)

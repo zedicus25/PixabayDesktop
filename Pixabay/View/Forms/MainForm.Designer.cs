@@ -34,9 +34,9 @@
             this.jumpToBtn = new System.Windows.Forms.Button();
             this.searchingTB = new System.Windows.Forms.TextBox();
             this.searchBtn = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.pageL = new System.Windows.Forms.Label();
+            this.logoPB = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.logoPB)).BeginInit();
             this.SuspendLayout();
             // 
             // prevBtn
@@ -85,6 +85,7 @@
             // 
             this.searchingTB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.searchingTB.Location = new System.Drawing.Point(12, 29);
+            this.searchingTB.MaxLength = 100;
             this.searchingTB.Name = "searchingTB";
             this.searchingTB.Size = new System.Drawing.Size(330, 26);
             this.searchingTB.TabIndex = 4;
@@ -100,32 +101,32 @@
             this.searchBtn.UseVisualStyleBackColor = true;
             this.searchBtn.Click += new System.EventHandler(this.searchBtn_Click);
             // 
-            // label2
+            // pageL
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(348, 827);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "label2";
+            this.pageL.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.pageL.Location = new System.Drawing.Point(330, 828);
+            this.pageL.Name = "pageL";
+            this.pageL.Size = new System.Drawing.Size(160, 23);
+            this.pageL.TabIndex = 7;
+            this.pageL.Text = "label2";
             // 
-            // pictureBox1
+            // logoPB
             // 
-            this.pictureBox1.Image = global::Pixabay.Properties.Resources.logo;
-            this.pictureBox1.Location = new System.Drawing.Point(461, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(327, 62);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 8;
-            this.pictureBox1.TabStop = false;
+            this.logoPB.Image = global::Pixabay.Properties.Resources.logo;
+            this.logoPB.Location = new System.Drawing.Point(461, 12);
+            this.logoPB.Name = "logoPB";
+            this.logoPB.Size = new System.Drawing.Size(327, 62);
+            this.logoPB.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.logoPB.TabIndex = 8;
+            this.logoPB.TabStop = false;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 881);
-            this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.logoPB);
+            this.Controls.Add(this.pageL);
             this.Controls.Add(this.searchBtn);
             this.Controls.Add(this.searchingTB);
             this.Controls.Add(this.jumpToBtn);
@@ -134,7 +135,7 @@
             this.Controls.Add(this.prevBtn);
             this.Name = "MainForm";
             this.Text = "Pixabay";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.logoPB)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -148,8 +149,8 @@
         private System.Windows.Forms.Button jumpToBtn;
         private System.Windows.Forms.TextBox searchingTB;
         private System.Windows.Forms.Button searchBtn;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label pageL;
+        private System.Windows.Forms.PictureBox logoPB;
     }
 }
 

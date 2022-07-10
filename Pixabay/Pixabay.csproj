@@ -76,6 +76,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\GalleryController.cs" />
+    <Compile Include="Controller\HitsController.cs" />
     <Compile Include="Model\Gallery.cs" />
     <Compile Include="Model\Hits.cs" />
     <Compile Include="View\CustomControlls\GalleryControl.cs">

@@ -9,9 +9,9 @@
         public int previewWidth { get; set; }
         public int previewHeight { get; set; }
         
-        public string webFormatURL { get; set; }
-        public int webFormatWidth { get; set; }
-        public int webFormatHeight { get; set; }
+        public string webformatURL { get; set; }
+        public int webformatWidth { get; set; }
+        public int webformatHeight { get; set; }
         
         public string largeImageURL { get; set; }
         public int imageWidth { get; set; }
