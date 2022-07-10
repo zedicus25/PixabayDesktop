@@ -9,6 +9,7 @@ namespace Pixabay.Controller
 {
     public class GalleryController
     {
+        public event Action<string> SendMsg;
         public Gallery Gallery { get; private set; }
 
         public Task DownloadTask { get; private set; }
@@ -16,6 +17,9 @@ namespace Pixabay.Controller
         private WebClient _client;
         private string _address;
         public string AddressForDownload { get; private set; }
+        public int CurrentPage { get; private set; }
+        private int _maxPage;
+        private int _minPage;
 
         public GalleryController()
         {
@@ -27,6 +31,8 @@ namespace Pixabay.Controller
             _client = new WebClient();
             _address = @"https://pixabay.com/api/?key=28501111-b5439624e74b8a51021b4ec3e&pretty=true";
             Gallery = GetJson(_client.DownloadString(_address));
+            CurrentPage = _minPage = 1;
+            _maxPage = Gallery.totalHits / Gallery.hits.Count;
             StartDownloadFiles();
         }
 
@@ -55,6 +61,29 @@ namespace Pixabay.Controller
             if (reply.Equals(String.Empty))
                 throw new ArgumentException("Reply cannot be empty");
             return JsonSerializer.Deserialize<Gallery>(reply);
+        }
+
+        public void GoToPage(int page)
+        {
+            if (page < _minPage || page > _maxPage)
+            {
+                SendMsg?.Invoke("Page exceeds the maximum or minimum");
+                return;
+            }
+
+            if (_address.Contains("&page="))
+            {
+                _address = _address.Replace($"&page={(page > CurrentPage ? CurrentPage-1:CurrentPage)}", $"&page={page}");
+            }
+            else if (!_address.Contains("&page="))
+            {
+                _address += $"&page={page}";
+            }
+
+            CurrentPage = page;
+            ClearGallery();
+            Gallery = GetJson(_client.DownloadString(_address));
+            StartDownloadFiles();
         }
 
         private bool CheckFolder(string folder)

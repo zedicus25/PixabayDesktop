@@ -43,6 +43,7 @@ namespace Pixabay.View.CustomControlls
                     pr.Location = new Point(0, mainPanel.Controls[mainPanel.Controls.Count - 1].Location.Y + pr.Height+5);
                 }
                 mainPanel.Controls.Add(pr);
+                GC.Collect(GC.GetGeneration(pr));
             }
         }
     }

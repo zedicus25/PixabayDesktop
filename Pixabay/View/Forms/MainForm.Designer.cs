@@ -35,6 +35,7 @@
             this.searchingTB = new System.Windows.Forms.TextBox();
             this.searchBtn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // prevBtn
@@ -46,6 +47,7 @@
             this.prevBtn.TabIndex = 0;
             this.prevBtn.Text = "Previous";
             this.prevBtn.UseVisualStyleBackColor = true;
+            this.prevBtn.Click += new System.EventHandler(this.prevBtn_Click);
             // 
             // nextBtn
             // 
@@ -56,6 +58,7 @@
             this.nextBtn.TabIndex = 1;
             this.nextBtn.Text = "Next";
             this.nextBtn.UseVisualStyleBackColor = true;
+            this.nextBtn.Click += new System.EventHandler(this.nextBtn_Click);
             // 
             // pageTB
             // 
@@ -64,6 +67,7 @@
             this.pageTB.Name = "pageTB";
             this.pageTB.Size = new System.Drawing.Size(69, 23);
             this.pageTB.TabIndex = 2;
+            this.pageTB.TextChanged += new System.EventHandler(this.pageTB_TextChanged);
             // 
             // jumpToBtn
             // 
@@ -74,6 +78,7 @@
             this.jumpToBtn.TabIndex = 3;
             this.jumpToBtn.Text = "Jump to";
             this.jumpToBtn.UseVisualStyleBackColor = true;
+            this.jumpToBtn.Click += new System.EventHandler(this.jumpToBtn_Click);
             // 
             // searchingTB
             // 
@@ -102,11 +107,21 @@
             this.label1.TabIndex = 6;
             this.label1.Text = "Stunning free images and royalty free stock";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(348, 827);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(35, 13);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "label2";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 881);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.searchBtn);
             this.Controls.Add(this.searchingTB);
@@ -130,6 +145,7 @@
         private System.Windows.Forms.TextBox searchingTB;
         private System.Windows.Forms.Button searchBtn;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }
 
