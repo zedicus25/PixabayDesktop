@@ -31,7 +31,9 @@ namespace Pixabay.Controller
                 Directory.CreateDirectory(_pathForSaving);
 
             Hit = hits;
-            _addressForDownload = @"F:\PreviewImages\WebImages";
+            _addressForDownload = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures) + "\\PreviewImages\\WebImages";
+            if (CheckFolder("WebImages") == false)
+                Directory.CreateDirectory(_addressForDownload);
             FileName = hits.webformatURL.Substring(hits.webformatURL.LastIndexOf('/') + 1);
             FileName.Replace('/', '_');
             FilePath = Path.Combine(_addressForDownload, FileName);

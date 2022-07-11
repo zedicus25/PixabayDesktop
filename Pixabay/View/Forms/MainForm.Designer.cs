@@ -36,18 +36,18 @@
             this.searchBtn = new System.Windows.Forms.Button();
             this.pageL = new System.Windows.Forms.Label();
             this.orientationP = new System.Windows.Forms.Panel();
-            this.horizontalRB = new System.Windows.Forms.RadioButton();
-            this.verticalRB = new System.Windows.Forms.RadioButton();
-            this.anyOrientRB = new System.Windows.Forms.RadioButton();
+            this.horizontalOrientationRB = new System.Windows.Forms.RadioButton();
+            this.verticalOrientationRB = new System.Windows.Forms.RadioButton();
+            this.anyOrientationRB = new System.Windows.Forms.RadioButton();
             this.imageTypeP = new System.Windows.Forms.Panel();
             this.anyTypeRB = new System.Windows.Forms.RadioButton();
             this.illustrationsTypeRB = new System.Windows.Forms.RadioButton();
             this.phootTypeRB = new System.Windows.Forms.RadioButton();
             this.vectorTypeRB = new System.Windows.Forms.RadioButton();
             this.orderP = new System.Windows.Forms.Panel();
-            this.editorChoiseRB = new System.Windows.Forms.RadioButton();
-            this.latestRB = new System.Windows.Forms.RadioButton();
-            this.popularRB = new System.Windows.Forms.RadioButton();
+            this.editorChoiseOrderRB = new System.Windows.Forms.RadioButton();
+            this.latestOrderRB = new System.Windows.Forms.RadioButton();
+            this.popularOrderRB = new System.Windows.Forms.RadioButton();
             this.saveSearchCB = new System.Windows.Forms.CheckBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.goBtn = new System.Windows.Forms.Button();
@@ -137,45 +137,48 @@
             // 
             // orientationP
             // 
-            this.orientationP.Controls.Add(this.horizontalRB);
-            this.orientationP.Controls.Add(this.verticalRB);
-            this.orientationP.Controls.Add(this.anyOrientRB);
+            this.orientationP.Controls.Add(this.horizontalOrientationRB);
+            this.orientationP.Controls.Add(this.verticalOrientationRB);
+            this.orientationP.Controls.Add(this.anyOrientationRB);
             this.orientationP.Location = new System.Drawing.Point(153, 80);
             this.orientationP.Name = "orientationP";
             this.orientationP.Size = new System.Drawing.Size(106, 82);
             this.orientationP.TabIndex = 9;
             // 
-            // horizontalRB
+            // horizontalOrientationRB
             // 
-            this.horizontalRB.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.horizontalRB.Location = new System.Drawing.Point(3, 55);
-            this.horizontalRB.Name = "horizontalRB";
-            this.horizontalRB.Size = new System.Drawing.Size(91, 24);
-            this.horizontalRB.TabIndex = 5;
-            this.horizontalRB.Text = "Horizontal";
-            this.horizontalRB.UseVisualStyleBackColor = true;
+            this.horizontalOrientationRB.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.horizontalOrientationRB.Location = new System.Drawing.Point(3, 55);
+            this.horizontalOrientationRB.Name = "horizontalOrientationRB";
+            this.horizontalOrientationRB.Size = new System.Drawing.Size(91, 24);
+            this.horizontalOrientationRB.TabIndex = 5;
+            this.horizontalOrientationRB.Text = "Horizontal";
+            this.horizontalOrientationRB.UseVisualStyleBackColor = true;
+            this.horizontalOrientationRB.CheckedChanged += new System.EventHandler(this.OrientationRB_CheckedChanged);
             // 
-            // verticalRB
+            // verticalOrientationRB
             // 
-            this.verticalRB.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.verticalRB.Location = new System.Drawing.Point(3, 30);
-            this.verticalRB.Name = "verticalRB";
-            this.verticalRB.Size = new System.Drawing.Size(91, 24);
-            this.verticalRB.TabIndex = 4;
-            this.verticalRB.Text = "Vertical";
-            this.verticalRB.UseVisualStyleBackColor = true;
+            this.verticalOrientationRB.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.verticalOrientationRB.Location = new System.Drawing.Point(3, 30);
+            this.verticalOrientationRB.Name = "verticalOrientationRB";
+            this.verticalOrientationRB.Size = new System.Drawing.Size(91, 24);
+            this.verticalOrientationRB.TabIndex = 4;
+            this.verticalOrientationRB.Text = "Vertical";
+            this.verticalOrientationRB.UseVisualStyleBackColor = true;
+            this.verticalOrientationRB.CheckedChanged += new System.EventHandler(this.OrientationRB_CheckedChanged);
             // 
-            // anyOrientRB
+            // anyOrientationRB
             // 
-            this.anyOrientRB.Checked = true;
-            this.anyOrientRB.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.anyOrientRB.Location = new System.Drawing.Point(3, 7);
-            this.anyOrientRB.Name = "anyOrientRB";
-            this.anyOrientRB.Size = new System.Drawing.Size(91, 24);
-            this.anyOrientRB.TabIndex = 3;
-            this.anyOrientRB.TabStop = true;
-            this.anyOrientRB.Text = "Any";
-            this.anyOrientRB.UseVisualStyleBackColor = true;
+            this.anyOrientationRB.Checked = true;
+            this.anyOrientationRB.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.anyOrientationRB.Location = new System.Drawing.Point(3, 7);
+            this.anyOrientationRB.Name = "anyOrientationRB";
+            this.anyOrientationRB.Size = new System.Drawing.Size(91, 24);
+            this.anyOrientationRB.TabIndex = 3;
+            this.anyOrientationRB.TabStop = true;
+            this.anyOrientationRB.Text = "Any";
+            this.anyOrientationRB.UseVisualStyleBackColor = true;
+            this.anyOrientationRB.CheckedChanged += new System.EventHandler(this.OrientationRB_CheckedChanged);
             // 
             // imageTypeP
             // 
@@ -199,6 +202,7 @@
             this.anyTypeRB.TabStop = true;
             this.anyTypeRB.Text = "Any";
             this.anyTypeRB.UseVisualStyleBackColor = true;
+            this.anyTypeRB.CheckedChanged += new System.EventHandler(this.TypeRB_CheckedChanged);
             // 
             // illustrationsTypeRB
             // 
@@ -207,8 +211,9 @@
             this.illustrationsTypeRB.Name = "illustrationsTypeRB";
             this.illustrationsTypeRB.Size = new System.Drawing.Size(91, 24);
             this.illustrationsTypeRB.TabIndex = 8;
-            this.illustrationsTypeRB.Text = "Illustrations";
+            this.illustrationsTypeRB.Text = "Illustration";
             this.illustrationsTypeRB.UseVisualStyleBackColor = true;
+            this.illustrationsTypeRB.CheckedChanged += new System.EventHandler(this.TypeRB_CheckedChanged);
             // 
             // phootTypeRB
             // 
@@ -217,8 +222,9 @@
             this.phootTypeRB.Name = "phootTypeRB";
             this.phootTypeRB.Size = new System.Drawing.Size(91, 24);
             this.phootTypeRB.TabIndex = 7;
-            this.phootTypeRB.Text = "Photos";
+            this.phootTypeRB.Text = "Photo";
             this.phootTypeRB.UseVisualStyleBackColor = true;
+            this.phootTypeRB.CheckedChanged += new System.EventHandler(this.TypeRB_CheckedChanged);
             // 
             // vectorTypeRB
             // 
@@ -229,49 +235,52 @@
             this.vectorTypeRB.TabIndex = 6;
             this.vectorTypeRB.Text = "Vector";
             this.vectorTypeRB.UseVisualStyleBackColor = true;
-            this.vectorTypeRB.CheckedChanged += new System.EventHandler(this.vectorTypeRB_CheckedChanged);
+            this.vectorTypeRB.CheckedChanged += new System.EventHandler(this.TypeRB_CheckedChanged);
             // 
             // orderP
             // 
-            this.orderP.Controls.Add(this.editorChoiseRB);
-            this.orderP.Controls.Add(this.latestRB);
-            this.orderP.Controls.Add(this.popularRB);
+            this.orderP.Controls.Add(this.editorChoiseOrderRB);
+            this.orderP.Controls.Add(this.latestOrderRB);
+            this.orderP.Controls.Add(this.popularOrderRB);
             this.orderP.Location = new System.Drawing.Point(12, 80);
             this.orderP.Name = "orderP";
             this.orderP.Size = new System.Drawing.Size(135, 82);
             this.orderP.TabIndex = 10;
             // 
-            // editorChoiseRB
+            // editorChoiseOrderRB
             // 
-            this.editorChoiseRB.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.editorChoiseRB.Location = new System.Drawing.Point(3, 54);
-            this.editorChoiseRB.Name = "editorChoiseRB";
-            this.editorChoiseRB.Size = new System.Drawing.Size(122, 24);
-            this.editorChoiseRB.TabIndex = 2;
-            this.editorChoiseRB.Text = "Editor\'s Choise";
-            this.editorChoiseRB.UseVisualStyleBackColor = true;
+            this.editorChoiseOrderRB.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.editorChoiseOrderRB.Location = new System.Drawing.Point(3, 54);
+            this.editorChoiseOrderRB.Name = "editorChoiseOrderRB";
+            this.editorChoiseOrderRB.Size = new System.Drawing.Size(122, 24);
+            this.editorChoiseOrderRB.TabIndex = 2;
+            this.editorChoiseOrderRB.Text = "Editor\'s Choice";
+            this.editorChoiseOrderRB.UseVisualStyleBackColor = true;
+            this.editorChoiseOrderRB.CheckedChanged += new System.EventHandler(this.OrderRB_CheckedChanged);
             // 
-            // latestRB
+            // latestOrderRB
             // 
-            this.latestRB.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.latestRB.Location = new System.Drawing.Point(3, 30);
-            this.latestRB.Name = "latestRB";
-            this.latestRB.Size = new System.Drawing.Size(91, 24);
-            this.latestRB.TabIndex = 1;
-            this.latestRB.Text = "Latest";
-            this.latestRB.UseVisualStyleBackColor = true;
+            this.latestOrderRB.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.latestOrderRB.Location = new System.Drawing.Point(3, 30);
+            this.latestOrderRB.Name = "latestOrderRB";
+            this.latestOrderRB.Size = new System.Drawing.Size(91, 24);
+            this.latestOrderRB.TabIndex = 1;
+            this.latestOrderRB.Text = "Latest";
+            this.latestOrderRB.UseVisualStyleBackColor = true;
+            this.latestOrderRB.CheckedChanged += new System.EventHandler(this.OrderRB_CheckedChanged);
             // 
-            // popularRB
+            // popularOrderRB
             // 
-            this.popularRB.Checked = true;
-            this.popularRB.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.popularRB.Location = new System.Drawing.Point(3, 7);
-            this.popularRB.Name = "popularRB";
-            this.popularRB.Size = new System.Drawing.Size(91, 24);
-            this.popularRB.TabIndex = 0;
-            this.popularRB.TabStop = true;
-            this.popularRB.Text = "Popular";
-            this.popularRB.UseVisualStyleBackColor = true;
+            this.popularOrderRB.Checked = true;
+            this.popularOrderRB.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.popularOrderRB.Location = new System.Drawing.Point(3, 7);
+            this.popularOrderRB.Name = "popularOrderRB";
+            this.popularOrderRB.Size = new System.Drawing.Size(91, 24);
+            this.popularOrderRB.TabIndex = 0;
+            this.popularOrderRB.TabStop = true;
+            this.popularOrderRB.Text = "Popular";
+            this.popularOrderRB.UseVisualStyleBackColor = true;
+            this.popularOrderRB.CheckedChanged += new System.EventHandler(this.OrderRB_CheckedChanged);
             // 
             // saveSearchCB
             // 
@@ -417,12 +426,12 @@
         private System.Windows.Forms.Panel orientationP;
         private System.Windows.Forms.Panel imageTypeP;
         private System.Windows.Forms.Panel orderP;
-        private System.Windows.Forms.RadioButton latestRB;
-        private System.Windows.Forms.RadioButton popularRB;
-        private System.Windows.Forms.RadioButton editorChoiseRB;
-        private System.Windows.Forms.RadioButton horizontalRB;
-        private System.Windows.Forms.RadioButton verticalRB;
-        private System.Windows.Forms.RadioButton anyOrientRB;
+        private System.Windows.Forms.RadioButton latestOrderRB;
+        private System.Windows.Forms.RadioButton popularOrderRB;
+        private System.Windows.Forms.RadioButton editorChoiseOrderRB;
+        private System.Windows.Forms.RadioButton horizontalOrientationRB;
+        private System.Windows.Forms.RadioButton verticalOrientationRB;
+        private System.Windows.Forms.RadioButton anyOrientationRB;
         private System.Windows.Forms.RadioButton anyTypeRB;
         private System.Windows.Forms.RadioButton illustrationsTypeRB;
         private System.Windows.Forms.RadioButton phootTypeRB;

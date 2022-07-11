@@ -90,11 +90,11 @@ namespace Pixabay.View
         {
             _galleryController.ClearFilters();
             saveSearchCB.Checked = false;
-            widthTB.Text = "Width";
-            heightTB.Text = "Height";
-            anyOrientRB.Checked = true;
+            widthTB.Text = "0";
+            heightTB.Text = "0";
+            anyOrientationRB.Checked = true;
             anyTypeRB.Checked = true;
-            popularRB.Checked = true;
+            popularOrderRB.Checked = true;
         }
 
         private void goBtn_Click(object sender, System.EventArgs e)
@@ -121,9 +121,32 @@ namespace Pixabay.View
                 (sender as TextBox).Text = "0";
         }
 
-        private void vectorTypeRB_CheckedChanged(object sender, System.EventArgs e)
+        private void TypeRB_CheckedChanged(object sender, System.EventArgs e)
         {
+            if((sender as RadioButton).Name.Contains("Type") && (sender as RadioButton).Checked == true)
+            {
+                _galleryController.SetImageType((sender as RadioButton).Text);
+                CreateGalleryControl();
+            }
+            
+        }
 
+        private void OrientationRB_CheckedChanged(object sender, System.EventArgs e)
+        {
+            if ((sender as RadioButton).Name.Contains("Orientation") && (sender as RadioButton).Checked == true)
+            {
+                _galleryController.SetOrientation((sender as RadioButton).Text);
+                CreateGalleryControl();
+            }
+        }
+
+        private void OrderRB_CheckedChanged(object sender, System.EventArgs e)
+        {
+            if ((sender as RadioButton).Name.Contains("Order") && (sender as RadioButton).Checked == true)
+            {
+                _galleryController.SetOrder((sender as RadioButton).Text);
+                CreateGalleryControl();
+            }
         }
     }
 }

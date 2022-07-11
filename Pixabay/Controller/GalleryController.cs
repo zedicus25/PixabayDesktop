@@ -31,11 +31,10 @@ namespace Pixabay.Controller
 
         public GalleryController()
         {
-            // _addressForDownload = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures) + "\\PreviewImages";
-            //if(CheckFolder("PreviewImages") == false)
-            // Directory.CreateDirectory(_addressForDownload);
+            AddressForDownload = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures) + "\\PreviewImages";
+            if(CheckFolder("PreviewImages") == false)
+                Directory.CreateDirectory(AddressForDownload);
 
-            AddressForDownload = @"F:\PreviewImages";
             _client = new WebClient();
             _address = @"https://pixabay.com/api/?key=28501111-b5439624e74b8a51021b4ec3e&pretty=true";
             Gallery = GetJson(_client.DownloadString(_address));
@@ -167,7 +166,98 @@ namespace Pixabay.Controller
 
         }
 
+        public void SetImageType(string type)
+        {
+            if (type.ToLower().Equals("any"))
+            {
+                if (_address.Contains("&image_type="))
+                {
+                    _address = _address.Replace($"&image_type={_imageType}", "");
+                    ClearGallery();
+                    Gallery = GetJson(_client.DownloadString(_address));
+                    StartDownloadFiles();
+                    GoToPage(1);
+                    return;
+                }
+            }
 
+            if (_address.Contains("&image_type="))
+            {
+                _address = _address.Replace($"&image_type={_imageType}", $"&image_type={type.ToLower()}");
+            }
+            else if (!_address.Contains("&image_type="))
+            {
+                _address += $"&image_type={type.ToLower()}";
+            }
+            _imageType = type.ToLower();
+            ClearGallery();
+            Gallery = GetJson(_client.DownloadString(_address));
+            StartDownloadFiles();
+            GoToPage(1);
+        }
+
+        public void SetOrientation(string orientation)
+        {
+            if (orientation.ToLower().Equals("any"))
+            {
+                if (_address.Contains("&orientation="))
+                {
+                    _address = _address.Replace($"&orientation={_orientation}", "");
+                    _orientation = orientation.ToLower();
+                    ClearGallery();
+                    Gallery = GetJson(_client.DownloadString(_address));
+                    StartDownloadFiles();
+                    GoToPage(1);
+                    return;
+                }
+            }
+
+            if (_address.Contains("&orientation="))
+            {
+                _address = _address.Replace($"&orientation={_orientation}", $"&orientation={orientation.ToLower()}");
+            }
+            else if (!_address.Contains("&orientation="))
+            {
+                _address += $"&orientation={orientation.ToLower()}";
+            }
+            _orientation = orientation.ToLower();
+            ClearGallery();
+            Gallery = GetJson(_client.DownloadString(_address));
+            StartDownloadFiles();
+            GoToPage(1);
+        }
+
+        public void SetOrder(string order)
+        {
+
+            if(order.ToLower().Equals("editor's choice"))
+            {
+                if (_address.Contains("&editors_choice="))
+                {
+                    _address = _address.Replace($"&editors_choice={_editorsChoice.ToString().ToLower()}", 
+                        $"&editors_choice={(!_editorsChoice).ToString().ToLower()}");
+                }
+                else if (!_address.Contains("&editors_choice="))
+                {
+                    _address += $"&editors_choice=true";
+                }
+                _editorsChoice = !_editorsChoice;
+            }
+
+            if (_address.Contains("&order="))
+            {
+                _address = _address.Replace($"&order={_order}", $"&order={order.ToLower()}");
+            }
+            else if (!_address.Contains("&order="))
+            {
+                _address += $"&order={order.ToLower()}";
+            }
+            _order = order.ToLower();
+            ClearGallery();
+            Gallery = GetJson(_client.DownloadString(_address));
+            StartDownloadFiles();
+            GoToPage(1);
+        }
 
         public void ClearFilters()
         {
@@ -205,6 +295,10 @@ namespace Pixabay.Controller
             {
                 _address.Replace($"&min_height={_minHeight}", "");
             }
+            ClearGallery();
+            Gallery = GetJson(_client.DownloadString(_address));
+            StartDownloadFiles();
+            GoToPage(1);
         }
 
         private bool CheckFolder(string folder)

@@ -29,7 +29,7 @@ namespace Pixabay.View.CustomControlls
 
         private void InitializeHits(List<Hits> hits, string path)
         {
-            int maxCountInRow = this.Width / hits[0].previewWidth;
+            int maxCountInRow = this.Width / 150;
             for (int i = 0; i < hits.Count; i++)
             {
                 PreviewImageControl pr = new PreviewImageControl(hits[i],path);
