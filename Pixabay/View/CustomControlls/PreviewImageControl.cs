@@ -32,6 +32,9 @@ namespace Pixabay.View.CustomControlls
             previewPB.Image = Image.FromStream(fs);
             fs.Close();
 
+            GC.Collect(GC.GetGeneration(bytes));
+            GC.Collect(GC.GetGeneration(fs));
+
             tagsL.Location = new System.Drawing.Point(5, previewPB.Size.Height + 5);
             tagsL.Size = new System.Drawing.Size(hit.previewWidth, 35);
             tagsL.Text = hit.tags.ToString().Replace(',',' ');

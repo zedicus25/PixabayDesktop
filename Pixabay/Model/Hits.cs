@@ -23,5 +23,6 @@
         public int comments { get; set; }
 
         public string user { get; set; }
+        public string userImageURL { get; set; }
     }
 }

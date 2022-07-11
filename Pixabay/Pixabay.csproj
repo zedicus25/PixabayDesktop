@@ -85,6 +85,12 @@
     <Compile Include="View\CustomControlls\GalleryControl.Designer.cs">
       <DependentUpon>GalleryControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\CustomControlls\PictureInformationControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\CustomControlls\PictureInformationControl.Designer.cs">
+      <DependentUpon>PictureInformationControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\CustomControlls\PreviewImageControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -117,6 +123,9 @@
     </Compile>
     <EmbeddedResource Include="View\CustomControlls\GalleryControl.resx">
       <DependentUpon>GalleryControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\CustomControlls\PictureInformationControl.resx">
+      <DependentUpon>PictureInformationControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\CustomControlls\PreviewImageControl.resx">
       <DependentUpon>PreviewImageControl.cs</DependentUpon>
