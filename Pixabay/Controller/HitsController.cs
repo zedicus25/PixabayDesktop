@@ -24,6 +24,7 @@ namespace Pixabay.Controller
 
         public HitsController(Hits hits)
         {
+            UserImage = String.Empty;
             _pathForSaving = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures) + "\\Downloads";
 
             if (CheckFolder("Downloads") == false)
@@ -37,9 +38,13 @@ namespace Pixabay.Controller
             _client = new WebClient();
             _client.DownloadFile(Hit.webformatURL, FilePath);
 
-            string name = Hit.userImageURL.Substring(Hit.userImageURL.LastIndexOf('/') + 1);
-            UserImage = Path.Combine(_addressForDownload, name);
-            _client.DownloadFile(Hit.userImageURL, UserImage);
+            if (!Hit.userImageURL.Equals(String.Empty))
+            {
+                string name = Hit.userImageURL.Substring(Hit.userImageURL.LastIndexOf('/') + 1);
+                UserImage = Path.Combine(_addressForDownload, name);
+                _client.DownloadFile(Hit.userImageURL, UserImage);
+            }
+           
 
         }
 
@@ -85,7 +90,8 @@ namespace Pixabay.Controller
         public void ClearDirectory()
         {
             File.Delete(FilePath);
-            File.Delete(UserImage);
+            if(!UserImage.Equals(String.Empty))
+                File.Delete(UserImage);
         }
 
         private bool CheckFolder(string folder)

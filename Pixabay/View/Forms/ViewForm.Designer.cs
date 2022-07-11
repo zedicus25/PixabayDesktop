@@ -136,6 +136,7 @@
             // 
             // userPB
             // 
+            this.userPB.InitialImage = global::Pixabay.Properties.Resources.user;
             this.userPB.Location = new System.Drawing.Point(658, 12);
             this.userPB.Name = "userPB";
             this.userPB.Size = new System.Drawing.Size(80, 80);

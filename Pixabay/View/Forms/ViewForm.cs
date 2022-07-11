@@ -35,22 +35,29 @@ namespace Pixabay.View
 
             userNameL.Text = hit.user;
 
-            bytes = File.ReadAllBytes(_hitsController.UserImage);
-            fs = new FileStream(_hitsController.UserImage, FileMode.Open, FileAccess.Read, FileShare.None);
-            fs.Read(bytes, 0, bytes.Length);
-            userPB.Image = Image.FromStream(fs);
-            fs.Close();
-            fs.Dispose();
+            if (!_hitsController.UserImage.Equals(String.Empty))
+            {
+                bytes = File.ReadAllBytes(_hitsController.UserImage);
+                fs = new FileStream(_hitsController.UserImage, FileMode.Open, FileAccess.Read, FileShare.None);
+                fs.Read(bytes, 0, bytes.Length);
+                userPB.Image = Image.FromStream(fs);
+                fs.Close();
+                fs.Dispose();
+            }
+            else
+            {
+                userPB.Image = userPB.InitialImage;
+            }
             GC.Collect(GC.GetGeneration(bytes));
             GC.Collect(GC.GetGeneration(fs));
 
-            string type = _hitsController.FileName.Substring(_hitsController.FileName.LastIndexOf('.')+1);
+            string type = _hitsController.FileName.Substring(_hitsController.FileName.LastIndexOf('.') + 1);
             string res = $"{hit.imageWidth}x{hit.imageHeight}";
             pictureInformationControl1.UpdateText(type, res, hit.views.ToString(), hit.downloads.ToString());
 
             res1RB.Text = $"{hit.webformatWidth}x{hit.webformatHeight}";
-            res2RB.Text = $"{hit.webformatWidth*2}x{hit.webformatHeight*2}";
-            res3RB.Text = $"{hit.webformatWidth*3}x{hit.webformatHeight*3}";
+            res2RB.Text = $"{hit.webformatWidth * 2}x{hit.webformatHeight * 2}";
+            res3RB.Text = $"{hit.webformatWidth * 3}x{hit.webformatHeight * 3}";
             res4RB.Text = $"{hit.imageWidth}x{hit.imageHeight}";
             _resForDownload = res1RB.Text;
         }

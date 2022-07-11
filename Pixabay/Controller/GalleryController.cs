@@ -21,6 +21,13 @@ namespace Pixabay.Controller
         public int MaxPage { get; private set; }
         private int _minPage;
         private string _previousSearch;
+        private bool _saveSearch = false;
+        private bool _editorsChoice = false;
+        private string _order;
+        private string _orientation;
+        private string _imageType;
+        private int _minWidth;
+        private int _minHeight;
 
         public GalleryController()
         {
@@ -108,6 +115,96 @@ namespace Pixabay.Controller
             Gallery = GetJson(_client.DownloadString(_address));
             StartDownloadFiles();
             GoToPage(1);
+        }
+
+        public void SetSaveSearch(bool val)
+        {
+            if (_address.Contains("&safesearch="))
+            {
+                _address = _address.Replace($"&safesearch={(!val).ToString().ToLower()}", $"&safesearch={val.ToString().ToLower()}");
+            }
+            else if (!_address.Contains("&safesearch="))
+            {
+                _address += $"&safesearch={val.ToString().ToLower()}";
+            }
+            _saveSearch = val;
+            ClearGallery();
+            Gallery = GetJson(_client.DownloadString(_address));
+            StartDownloadFiles();
+            GoToPage(1);
+        }
+
+        public void SetMinSize(int width, int height)
+        {
+            if (width < 0)
+                width = 0;
+            if (height < 0)
+                height = 0;
+            if (_address.Contains("&min_width="))
+            {
+                _address = _address.Replace($"&min_width={_minWidth}", $"&min_width={width}");
+            }
+            else if (!_address.Contains("&min_widthh="))
+            {
+                _address += $"&min_width={width}";
+            }
+
+            if (_address.Contains("&min_height="))
+            {
+                _address = _address.Replace($"&min_height={_minHeight}", $"&min_height={height}");
+            }
+            else if (!_address.Contains("&min_height="))
+            {
+                _address += $"&min_height={height}";
+            }
+            _minWidth = width;
+            _minHeight = height;
+
+            ClearGallery();
+            Gallery = GetJson(_client.DownloadString(_address));
+            StartDownloadFiles();
+            GoToPage(1);
+
+        }
+
+
+
+        public void ClearFilters()
+        {
+            if (_address.Contains("&safesearch="))
+            {
+                _address.Replace($"&safesearch={_saveSearch}", "");
+            }
+
+            if (_address.Contains("&order="))
+            {
+                _address.Replace($"&order={_order}", "");
+            }
+
+            if (_address.Contains("&editors_choice="))
+            {
+                _address.Replace($"&editors_choicer={_editorsChoice}", "");
+            }
+
+            if (_address.Contains("&orientation="))
+            {
+                _address.Replace($"&orientation={_orientation}", "");
+            }
+
+            if (_address.Contains("&image_type="))
+            {
+                _address.Replace($"&image_type={_imageType}", "");
+            }
+
+            if (_address.Contains("&min_width="))
+            {
+                _address.Replace($"&min_width={_minWidth}", "");
+            }
+
+            if (_address.Contains("&min_height="))
+            {
+                _address.Replace($"&min_height={_minHeight}", "");
+            }
         }
 
         private bool CheckFolder(string folder)

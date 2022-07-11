@@ -25,16 +25,25 @@ namespace Pixabay.View
             this.Controls.Add(gl);
         }
 
+        private void CreateGalleryControl()
+        {
+            for (int i = 0; i < this.Controls.Find("galleryControl", true).Length; i++)
+            {
+                this.Controls.Find("galleryControl", true)[i].Dispose();
+            }
+            InitializeGalleryControl();
+            SetCurrentPage();
+        }
+
         private void GetMsg(string msg)
         {
-            MessageBox.Show(msg,"Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            MessageBox.Show(msg, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
         private void nextBtn_Click(object sender, System.EventArgs e)
         {
             _galleryController.GoToPage(_galleryController.CurrentPage + 1);
-            this.Controls.RemoveByKey("galleryControl");
-            InitializeGalleryControl();
-            SetCurrentPage();
+            CreateGalleryControl();
+
         }
 
         private void prevBtn_Click(object sender, System.EventArgs e)
@@ -42,9 +51,7 @@ namespace Pixabay.View
             if (_galleryController.CurrentPage == 1)
                 return;
             _galleryController.GoToPage(_galleryController.CurrentPage - 1);
-            this.Controls.RemoveByKey("galleryControl");
-            InitializeGalleryControl();
-            SetCurrentPage();
+            CreateGalleryControl();
         }
 
         private void pageTB_TextChanged(object sender, System.EventArgs e)
@@ -63,20 +70,60 @@ namespace Pixabay.View
             if (pageTB.Text.Equals(string.Empty))
                 return;
             _galleryController.GoToPage(int.Parse(pageTB.Text));
-            this.Controls.RemoveByKey("galleryControl");
-            InitializeGalleryControl();
+            CreateGalleryControl();
             pageTB.Text = string.Empty;
-            SetCurrentPage();
         }
 
         private void searchBtn_Click(object sender, System.EventArgs e)
         {
             _galleryController.Search(searchingTB.Text);
-            this.Controls.RemoveByKey("galleryControl");
-            InitializeGalleryControl();
-            SetCurrentPage();
+            CreateGalleryControl();
         }
 
-        
+        private void saveSearchCB_CheckedChanged(object sender, System.EventArgs e)
+        {
+            _galleryController.SetSaveSearch((sender as CheckBox).Checked);
+            CreateGalleryControl();
+        }
+
+        private void button1_Click(object sender, System.EventArgs e)
+        {
+            _galleryController.ClearFilters();
+            saveSearchCB.Checked = false;
+            widthTB.Text = "Width";
+            heightTB.Text = "Height";
+            anyOrientRB.Checked = true;
+            anyTypeRB.Checked = true;
+            popularRB.Checked = true;
+        }
+
+        private void goBtn_Click(object sender, System.EventArgs e)
+        {
+            int minWidth = 0;
+            int minHeight = 0;
+            minWidth = int.Parse(widthTB.Text);
+            minHeight = int.Parse(heightTB.Text);
+            _galleryController.SetMinSize(minWidth, minHeight);
+            CreateGalleryControl();
+        }
+
+        private void sizeTB_Enter(object sender, System.EventArgs e)
+        {
+            if((sender as TextBox).Text.Equals("0"))
+                (sender as TextBox).Text = string.Empty;
+        }
+
+        private void sizeTB_Leave(object sender, System.EventArgs e)
+        {
+            if ((sender as TextBox).Name.Equals("widthTB") && (sender as TextBox).Text.Equals(string.Empty))
+                (sender as TextBox).Text = "0";
+            if ((sender as TextBox).Name.Equals("heightTB") && (sender as TextBox).Text.Equals(string.Empty))
+                (sender as TextBox).Text = "0";
+        }
+
+        private void vectorTypeRB_CheckedChanged(object sender, System.EventArgs e)
+        {
+
+        }
     }
 }

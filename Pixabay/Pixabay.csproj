@@ -154,6 +154,7 @@
     <Content Include="Resources\comment.png" />
     <Content Include="Resources\like.png" />
     <Content Include="Resources\logo.png" />
+    <Content Include="Resources\user.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
