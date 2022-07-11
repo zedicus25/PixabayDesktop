@@ -39,6 +39,7 @@ namespace Pixabay.Controller
 
         public void StartDownloadFiles()
         {
+            DownloadTask?.Dispose();
             DownloadTask = new Task(DownloadPreviewFiles);
             DownloadTask.Start();
             DownloadTask.Wait();
@@ -106,6 +107,7 @@ namespace Pixabay.Controller
             ClearGallery();
             Gallery = GetJson(_client.DownloadString(_address));
             StartDownloadFiles();
+            GoToPage(1);
         }
 
         private bool CheckFolder(string folder)

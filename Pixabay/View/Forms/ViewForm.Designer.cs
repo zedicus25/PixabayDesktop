@@ -39,9 +39,11 @@
             this.userPB = new System.Windows.Forms.PictureBox();
             this.mainImagePB = new System.Windows.Forms.PictureBox();
             this.pictureInformationControl1 = new Pixabay.View.CustomControlls.PictureInformationControl();
+            this.pixabayPB = new System.Windows.Forms.PictureBox();
             this.resoulitionPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userPB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainImagePB)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pixabayPB)).BeginInit();
             this.SuspendLayout();
             // 
             // tagsL
@@ -157,11 +159,22 @@
             this.pictureInformationControl1.Size = new System.Drawing.Size(224, 109);
             this.pictureInformationControl1.TabIndex = 6;
             // 
+            // pixabayPB
+            // 
+            this.pixabayPB.Image = global::Pixabay.Properties.Resources.logo;
+            this.pixabayPB.Location = new System.Drawing.Point(658, 342);
+            this.pixabayPB.Name = "pixabayPB";
+            this.pixabayPB.Size = new System.Drawing.Size(224, 97);
+            this.pixabayPB.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pixabayPB.TabIndex = 7;
+            this.pixabayPB.TabStop = false;
+            // 
             // ViewForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(895, 572);
+            this.Controls.Add(this.pixabayPB);
             this.Controls.Add(this.pictureInformationControl1);
             this.Controls.Add(this.resoulitionPanel);
             this.Controls.Add(this.downloadBtn);
@@ -175,6 +188,7 @@
             this.resoulitionPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.userPB)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainImagePB)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pixabayPB)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -192,5 +206,6 @@
         private System.Windows.Forms.RadioButton res2RB;
         private System.Windows.Forms.RadioButton res1RB;
         private CustomControlls.PictureInformationControl pictureInformationControl1;
+        private System.Windows.Forms.PictureBox pixabayPB;
     }
 }

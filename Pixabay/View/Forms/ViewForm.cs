@@ -40,6 +40,7 @@ namespace Pixabay.View
             fs.Read(bytes, 0, bytes.Length);
             userPB.Image = Image.FromStream(fs);
             fs.Close();
+            fs.Dispose();
             GC.Collect(GC.GetGeneration(bytes));
             GC.Collect(GC.GetGeneration(fs));
 

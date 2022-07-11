@@ -20,7 +20,7 @@ namespace Pixabay.View
         private void InitializeGalleryControl()
         {
             GalleryControl gl = new GalleryControl(this.Size, _galleryController.Gallery.hits, _galleryController.AddressForDownload);
-            gl.Location = new System.Drawing.Point(10, 100);
+            gl.Location = new System.Drawing.Point(10, 180);
             gl.Name = "galleryControl";
             this.Controls.Add(gl);
         }
@@ -74,6 +74,9 @@ namespace Pixabay.View
             _galleryController.Search(searchingTB.Text);
             this.Controls.RemoveByKey("galleryControl");
             InitializeGalleryControl();
+            SetCurrentPage();
         }
+
+        
     }
 }
